@@ -6,7 +6,7 @@ const users = [...Array(16)].map((user) => (
     lastName: faker.name.lastName(),
     email: faker.internet.email(),
     username: faker.internet.userName(),
-    password: faker.internet.password(8),
+    password_digest: faker.internet.password(8),
     photo: faker.image.avatar(),
     createdAt: new Date(),
     updatedAt: new Date()
