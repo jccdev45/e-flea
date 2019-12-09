@@ -6,6 +6,7 @@ module.exports = {
       category: 'Auto - Cars, Motorcycles',
       photos: 'https://i.imgur.com/yfHCX40.jpg',
       location: '110 Realaddress St, NY',
+      description: 'This car sucks, saving for Tesla',
       userId: 1,
       createdAt: new Date(),
       updatedAt: new Date()
