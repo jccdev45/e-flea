@@ -10,9 +10,9 @@ router.post('/sign-in', controllers.signIn)
 router.put('/change-password', restrict, controllers.changePassword)
 router.get('/users/:id', controllers.getUserById)
 router.get('/items', controllers.getAllItems)
-router.get('items/:id', controllers.getItemById)
-router.post('items/:id', restrict, controllers.createItem)
-router.put('items/:id', restrict, controllers.updateItem)
-router.delete('items/:id', restrict, controllers.deleteItem)
+router.get('/items/:id', controllers.getItemById)
+router.post('/items/:id', restrict, controllers.createItem)
+router.put('/items/:id', restrict, controllers.updateItem)
+router.delete('/items/:id', restrict, controllers.deleteItem)
 
 module.exports = router
