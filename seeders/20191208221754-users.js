@@ -2,10 +2,10 @@ const faker = require('faker');
 
 const users = [...Array(16)].map((user) => (
   {
-    firstname: faker.name.firstname(),
-    lastname: faker.name.lastname(),
+    firstName: faker.name.firstName(),
+    lastName: faker.name.lastName(),
     email: faker.internet.email(),
-    username: faker.internet.username(),
+    username: faker.internet.userName(),
     password: faker.internet.password(8),
     photo: faker.image.avatar(),
     createdAt: new Date(),
