@@ -5,7 +5,7 @@ import Nav from "./Nav";
 const Layout = props => (
   <div className="layout">
     <Nav />
-    <main>{props.children}</main>
+    <div className="main-content">{props.children}</div>
   </div>
 );
 
