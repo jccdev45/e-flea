@@ -2,6 +2,7 @@ import React from "react";
 import { Route, Switch } from "react-router-dom";
 import Home from "../screens/Home";
 import Item from '../components/shared/Item'
+import About from "../screens/About"
 
 const Routes = ({ user, items }) => (
   <Switch>
@@ -16,6 +17,7 @@ const Routes = ({ user, items }) => (
       user={user}
       render={props => <Item {...props} />}
     />
+    <Route exact path ='/about' component={About} />
   </Switch>
 );
 
