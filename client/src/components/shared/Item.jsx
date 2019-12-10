@@ -1,23 +1,37 @@
 import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
+import { getItemById } from "../../services/items";
+import Layout from "./Layout";
 
 export default class Item extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      item: null,
-      deleted: false
+      item: null
     };
   }
 
+  async componentDidMount() {
+    try {
+      const resp = await getItemById(this.props.match.params.id);
+      this.setState({ item: resp });
+      // console.log(resp.name);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   render() {
+    const { item } = this.state;
+
+    if (!item) {
+      return <p>Loading</p>;
+    }
+
     return (
-      <div className="itemCard">
-        <NavLink to={`/items/${this.props.id}`}>
-          <img src={this.props.photos} width="200px" alt={this.props.name} />
-        </NavLink>
-      </div>
+      <Layout>
+        <h1>{item.name}</h1>
+      </Layout>
     );
   }
 }

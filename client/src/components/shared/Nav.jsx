@@ -7,18 +7,8 @@ export default function Nav() {
     <div className="header">
       <div className="nav-container">
         <div className="nav-home">
-          <NavLink className="nav" to="/" activeClassName=''>
+          <NavLink className="nav navlink-home" to="/" activeClassName=''>
             E•Flea
-          </NavLink>
-        </div>
-        <div className="nav-signin">
-          <NavLink className="nav" activeClassName="active" to="/sign-in">
-            Log In
-          </NavLink>
-        </div>
-        <div className="nav-signup">
-          <NavLink className="nav" activeClassName="active" to="/sign-up">
-            Sign Up
           </NavLink>
         </div>
         <div className="nav-always">
@@ -34,6 +24,18 @@ export default function Nav() {
             <NavLink className="nav" activeClassName="active" to="/create-item">
               Sell Now
             </NavLink>
+            <div className = 'nav-login-signup'>
+        <div className="nav-signin">
+          <NavLink className="nav" activeClassName="active" to="/sign-in">
+            Log In
+          </NavLink>
+        </div>
+        <div className="nav-signup">
+          <NavLink className="nav" activeClassName="active" to="/sign-up">
+            Sign Up
+          </NavLink>
+        </div>
+        </div>
           </div>
         </div>
       </div>

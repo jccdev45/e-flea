@@ -1,0 +1,4 @@
+.items {
+    display: grid;
+    flex-direction: column;
+}

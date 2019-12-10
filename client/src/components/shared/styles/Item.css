@@ -1,0 +1,9 @@
+.main-card {
+    height: max-content;
+    max-height: 200px;
+    width: 175px;
+    max-width: 175px;
+    margin: 2px;
+    
+}
+
