@@ -4,7 +4,7 @@ const { Item, User } = require("../models");
 
 const SALT_ROUNDS = 11;
 const TOKEN_KEY = "jordanandrewyev";
-
+// console.log('testing controllers')
 const signUp = async (req, res) => {
   try {
     console.log(req.body);
@@ -54,12 +54,12 @@ const signIn = async (req, res) => {
     return res.status(500).json({ error: error.message });
   }
 };
-//this is done to the best of my ability but will need more work- ill check in with Mick during TA hours and hopefully I can get this going
 const changePassword = async (req, res) => {
-  console.log(req.body);
   try {
     const { id } = req.params;
-    const updated = await User.update(req.body, {
+    const { password } = req.body
+    const password_digest = await bcrypt.hash(req.body.password, SALT_ROUNDS);
+    const updated = await User.update({ password_digest: password_digest }, {
       where: { id: id }
     });
     const updatedUser = await User.findOne({
@@ -87,6 +87,7 @@ const createItem = async (req, res) => {
 };
 
 const getAllItems = async (req, res) => {
+  
   try {
     const items = await Item.findAll();
     return res.status(200).json({ items });
