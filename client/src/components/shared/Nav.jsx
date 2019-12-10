@@ -7,7 +7,7 @@ export default function Nav() {
     <div className="header">
       <div className="nav-container">
         <div className="nav-home">
-          <NavLink className="nav" to="/">
+          <NavLink className="nav" to="/" activeClassName=''>
             E•Flea
           </NavLink>
         </div>
