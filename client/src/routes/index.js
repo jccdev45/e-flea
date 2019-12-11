@@ -5,8 +5,9 @@ import Item from "../components/shared/Item";
 import About from "../screens/About";
 import Login from "../screens/Login";
 import Register from "../screens/Register";
+import ItemSale from "../screens/ItemSale";
 
-const Routes = ({ user, items, setUser }) => (
+const Routes = ({ user, items, setUser, addItem, clearUser }) => (
   <Switch>
     <Route
       exact
@@ -29,6 +30,11 @@ const Routes = ({ user, items, setUser }) => (
       exact
       path="/sign-up"
       render={props => <Register {...props} setUser={setUser} />}
+    />
+    <Route
+      exact
+      path="/create-item"
+      render={props => <ItemSale {...props} addItem={addItem} />}
     />
   </Switch>
 );

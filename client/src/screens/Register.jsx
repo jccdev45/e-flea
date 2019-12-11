@@ -77,7 +77,7 @@ class Register extends Component {
               />
               <input
                 required
-                type="text"
+                type="password"
                 name="password"
                 value={password}
                 placeholder="Password"
@@ -85,7 +85,7 @@ class Register extends Component {
               />
               <input
                 required
-                type="text"
+                type="password"
                 name="passwordConfirmation"
                 value={passwordConfirmation}
                 placeholder="Confirm Password"

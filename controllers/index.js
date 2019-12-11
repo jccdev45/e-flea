@@ -77,9 +77,7 @@ const createItem = async (req, res) => {
     console.log("req.body:", req.body);
     const createdItem = await Item.create(req.body);
     return res.status(201).json({
-      item: {
-        createdItem
-      }
+        createdItem,
     });
   } catch (error) {
     console.log(error);

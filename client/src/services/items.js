@@ -2,6 +2,7 @@ import api from "./apiConfig";
 
 export const createItem = async item => {
   try {
+    console.log('I am here', item)
     const resp = await api.post("/items", item);
     return resp;
   } catch (error) {

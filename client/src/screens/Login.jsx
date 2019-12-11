@@ -79,7 +79,7 @@ class Login extends Component {
                 placeholder="Password"
                 onChange={this.handleChange}
               />
-              {this.renderError}
+              {this.renderError()}
             </form>
           </div>
         </div>
