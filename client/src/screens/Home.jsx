@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Layout from "../components/shared/Layout";
+import SubHeader from "../components/shared/SubHeader";
 
 export default function Home(props) {
   const { items, user } = props;
@@ -10,7 +11,7 @@ export default function Home(props) {
       return items.map(item => (
         <div key={item.id} className="item">
           <Link to={`/items/${item.id}`} user={user}>
-            <img src={item.photos} width="200px" alt={item.name} />
+            <img src={item.photos} width="175px" alt={item.name} />
           </Link>
         </div>
       ));
@@ -21,6 +22,7 @@ export default function Home(props) {
 
   return (
     <Layout>
+      <SubHeader />
       <div className="items">{itemsForSale()}</div>
     </Layout>
   );
