@@ -34,7 +34,7 @@ const signIn = async (req, res) => {
     const { username, password } = req.body;
     const user = await User.findOne({
       where: {
-        username
+        username,
       }
     });
     if (await bcrypt.compare(password, user.dataValues.password_digest)) {

@@ -6,6 +6,7 @@ import About from "../screens/About";
 import Login from "../screens/Login";
 import Register from "../screens/Register";
 import ItemSale from "../screens/ItemSale";
+import SignOut from "../screens/SignOut";
 
 const Routes = ({ user, items, setUser, addItem, clearUser }) => (
   <Switch>
@@ -35,6 +36,11 @@ const Routes = ({ user, items, setUser, addItem, clearUser }) => (
       exact
       path="/create-item"
       render={props => <ItemSale {...props} addItem={addItem} />}
+    />
+    <Route
+      exact
+      path="/sign-out"
+      render={props => <SignOut {...props} clearUser={clearUser} setUser={setUser} />}
     />
   </Switch>
 );
