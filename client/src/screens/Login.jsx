@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { signInUser } from "../services/auth";
 import Layout from "../components/shared/Layout";
 
+import "./styles/Auth.css";
+
 class Login extends Component {
   constructor() {
     super();
@@ -50,7 +52,11 @@ class Login extends Component {
         </button>
       );
     } else {
-      return <button type="submit">Log In</button>;
+      return (
+        <button className="auth-button" type="submit">
+          Log In
+        </button>
+      );
     }
   };
 
@@ -59,29 +65,27 @@ class Login extends Component {
 
     return (
       <Layout>
-        <div className="row form-background">
-          <div className="form-container">
-            <h3>Log In</h3>
-            <form onSubmit={this.onSignIn}>
-              <input
-                required
-                type="text"
-                name="username"
-                value={username}
-                placeholder="Username"
-                onChange={this.handleChange}
-              />
-              <input
-                required
-                name="password"
-                value={password}
-                type="password"
-                placeholder="Password"
-                onChange={this.handleChange}
-              />
-              {this.renderError}
-            </form>
-          </div>
+        <div className="column form-background">
+          <h3>Log In</h3>
+          <form className="column auth-form" onSubmit={this.onSignIn}>
+            <input
+              required
+              type="text"
+              name="username"
+              value={username}
+              placeholder="Username"
+              onChange={this.handleChange}
+            />
+            <input
+              required
+              name="password"
+              value={password}
+              type="password"
+              placeholder="Password"
+              onChange={this.handleChange}
+            />
+            {this.renderError()}
+          </form>
         </div>
       </Layout>
     );
