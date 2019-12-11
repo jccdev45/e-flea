@@ -1,33 +1,55 @@
-import React, { Component } from 'react'
-import { signUp, signInUser } from '../services/auth'
+import React, { Component } from 'react';
+import { signUp, signInUser } from '../services/auth';
+// import { setUser } from '../components/Container';
+
+import { api } from '../services/apiConfig.js'
 
 
 class Register extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
 
         this.state = {
             username: '',
             email: '',
             password: '',
+            firstName: '',
+            lastName: '',
+            photo: '',
             passwordConfirmation: '',
             error: false,
             errorMsg: ''
         }
     }
 
-    handleChange(event) {
+    handleChange = (e) => {
         this.setState({
-            [event.target.name]: event.target.value,
+            [e.target.name]: e.target.value ,
             error: false,
             errorMsg: ''
         })
 
     }
+    // handleSubmit = (event) => {
+    //     event.preventDefault()
+    //     const { username, firstName, lastName, email, password, photo } = this.state
+    //     const data = {
+    //         username,
+    //         password,
+    //         firstName,
+    //         lastName,
+    //         email,
+    //         photo
+    //     }
 
-    onSignUp = event => {
-        event.preventDefault()
+//         api.post('/users', data)
+//         .then((response) => response.status === 201 ? this.props.history.push('/') : null) 
+//         .catch(() => this.setState({ errorMsg: 'There was an error' }))
+// }
 
+    onSignUp = (e) => {
+        e.preventDefault()
+        console.log('YOOOOOOOOO', this.state)
         const { history, setUser } = this.props 
 
         signUp(this.state)
@@ -47,7 +69,7 @@ class Register extends Component {
     }
     renderError = () => {
         const toggleForm = this.state.error ? 'danger' : ''
-        if (this.state.isError) {
+        if (this.state.error) {
           return (
             <button type="submit" className={toggleForm}>
               {this.state.errorMsg}
@@ -59,7 +81,7 @@ class Register extends Component {
       }
 
     render() {
-        const { email, username, password, passwordConfirmation, url} = this.state 
+        const { email, username, password, passwordConfirmation, firstName, lastName, photo} = this.state 
 
         return (
             <div className="row">
@@ -70,23 +92,39 @@ class Register extends Component {
                             required
                             type="text"
                             name="username"
-                            value={username}
+                            defaultValue={username}
                             placeholder="Username"
                             onChange={this.handleChange}
                         />
                         <input
                             required
-                            type="text"
+                            type="password"
                             name="password"
-                            value={password}
+                            defaultValue={password}
                             placeholder="Password"
                             onChange={this.handleChange}
                         />
                         <input
                             required
                             type="text"
+                            name="firstName"
+                            defaultValue={firstName}
+                            placeholder="First Name"
+                            onChange={this.handleChange}
+                        />
+                        <input
+                            required
+                            type="text"
+                            name="lastName"
+                            defaultValue={lastName}
+                            placeholder="Last Name"
+                            onChange={this.handleChange}
+                        />
+                        <input
+                            required
+                            type="text"
                             name="passwordConfirmation"
-                            value={passwordConfirmation}
+                            defaultValue={passwordConfirmation}
                             placeholder="Confirm Password"
                             onChange={this.handleChange}
                         />
@@ -94,18 +132,19 @@ class Register extends Component {
                             required
                             type="text"
                             name="email"
-                            value={email}
+                            defaultValue={email}
                             placeholder="Email"
-                            onChange={this.onChange}
+                            onChange={this.handleChange}
                         />
                         <input
                             required
                             type="text"
-                            name="ProfileUrl"
-                            value={url}
+                            name="photo"
+                            defaultValue={photo}
                             placeholder="Profile Picture URL"
                             onChange={this.handleChange}
                         />
+                        {/* <button title='Submit' className='RegisterSubmitAcc'  onSubmit={this.handleSubmit} /> */}
                         {this.renderError()}
                     </form>
 

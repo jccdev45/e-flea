@@ -1,5 +1,5 @@
-const { Router } = require('express')
-const controllers = require('../controllers')
+const { Router }  = require('express')
+const controllers = require('../controllers/index.js')
 const router = Router()
 const restrict = require('../helpers')
 
@@ -16,3 +16,4 @@ router.put('/items/:id', restrict, controllers.updateItem)
 router.delete('/items/:id', restrict, controllers.deleteItem)
 
 module.exports = router
+

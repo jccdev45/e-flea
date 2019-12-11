@@ -7,20 +7,25 @@ const TOKEN_KEY = "jordanandrewyev";
 // console.log('testing controllers')
 const signUp = async (req, res) => {
   try {
-    console.log(req.body);
-    const { username, email, password } = req.body;
+    console.log(":)");
+    const { username, email, password, firstName, lastName, photo } = req.body;
     const password_digest = await bcrypt.hash(password, SALT_ROUNDS);
     const user = await User.create({
       username,
       firstName,
       lastName,
       email,
+      photo,
       password_digest
+
     });
     const payload = {
       id: user.id,
       username: user.username,
-      email: user.email
+      email: user.email,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      photo: user.photo
     };
     const token = jwt.sign(payload, TOKEN_KEY);
     return res.status(201).json({ user, token });
@@ -43,7 +48,7 @@ const signIn = async (req, res) => {
       const payload = {
         id: user.id,
         username: user.username,
-        email: user.email
+        password: user.password
       };
       const token = jwt.sign(payload, TOKEN_KEY);
       return res.status(201).json({ user, token });
