@@ -40,8 +40,9 @@ const Routes = ({ user, items, setUser, addItem, clearUser }) => (
     <Route
       exact
       path="/sign-out"
-      render={props => <SignOut {...props} clearUser={clearUser} setUser={setUser} />}
-    />
+      user={user}
+      render={props => <SignOut {...props} clearUser={clearUser} />}
+      />
     <Route
       exact
       path="/sign-up"
