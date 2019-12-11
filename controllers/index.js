@@ -12,8 +12,6 @@ const signUp = async (req, res) => {
     const password_digest = await bcrypt.hash(password, SALT_ROUNDS);
     const user = await User.create({
       username,
-      firstName,
-      lastName,
       email,
       password_digest
     });
@@ -57,11 +55,14 @@ const signIn = async (req, res) => {
 const changePassword = async (req, res) => {
   try {
     const { id } = req.params;
-    const { password } = req.body
+    const { password } = req.body;
     const password_digest = await bcrypt.hash(req.body.password, SALT_ROUNDS);
-    const updated = await User.update({ password_digest: password_digest }, {
-      where: { id: id }
-    });
+    const updated = await User.update(
+      { password_digest: password_digest },
+      {
+        where: { id: id }
+      }
+    );
     const updatedUser = await User.findOne({
       where: { id: id }
     });
@@ -87,7 +88,6 @@ const createItem = async (req, res) => {
 };
 
 const getAllItems = async (req, res) => {
-  
   try {
     const items = await Item.findAll();
     return res.status(200).json({ items });
@@ -129,41 +129,41 @@ const getUserById = async (req, res) => {
 };
 
 const updateItem = async (req, res) => {
-    try {
-        const { id } = req.params;
-        const { item } = req.body;
-        const [updated] = await Item.updated(item, {
-            where: { id: id }
-        });
-        if (updated) {
-            const updatedItem = await Item.findOne({ where: { id: id }});
-            return res.status(202).json({ item: updatedItem });
-        }
-        throw new Error("Item not found!");
-    } catch (error) {
-        return res.status(500).send(error.message)
+  try {
+    const { id } = req.params;
+    const { item } = req.body;
+    const [updated] = await Item.updated(item, {
+      where: { id: id }
+    });
+    if (updated) {
+      const updatedItem = await Item.findOne({ where: { id: id } });
+      return res.status(202).json({ item: updatedItem });
     }
+    throw new Error("Item not found!");
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
 };
 
 const deleteItem = async (req, res) => {
-    try {
-        const { id } = req.params;
-        const deleted = await Item.destroy({
-            where: { id: id }
-        });
-        if (deleted) {
-            return res.status(202).send("Item")
-        }
-        throw new Error("Item not found")
-    } catch (error) {
-    return res.status(500).send(error.message)
-}
-}
+  try {
+    const { id } = req.params;
+    const deleted = await Item.destroy({
+      where: { id: id }
+    });
+    if (deleted) {
+      return res.status(202).send("Item");
+    }
+    throw new Error("Item not found");
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
+};
 module.exports = {
   signUp,
   signIn,
   changePassword,
-  createItem, 
+  createItem,
   getAllItems,
   getItemById,
   getUserById,
