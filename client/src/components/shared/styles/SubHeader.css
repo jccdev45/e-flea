@@ -1,0 +1,19 @@
+.subheader {
+    display: flex;
+    background: #f9f5ff;
+    margin: 10px auto;
+    padding: 20px;
+    text-align: center;
+    font-family: 'Sinhala MN';
+}    
+.subheader-text, .categories {
+    display: flex;
+    flex-direction: column;
+}
+.subheader-text {
+    justify-content: flex-start;
+}
+.categories {
+    justify-content: flex-end;
+
+}
