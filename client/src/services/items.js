@@ -44,3 +44,12 @@ export const getItemById = async id => {
     throw error;
   }
 };
+
+export const getUserById = async id => {
+  try {
+    const resp = await api.get(`/users/${id}`);
+    return resp.data.user;
+  } catch (error) {
+    throw error;
+  }
+};
