@@ -42,6 +42,11 @@ const Routes = ({ user, items, setUser, addItem, clearUser }) => (
       path="/sign-out"
       render={props => <SignOut {...props} clearUser={clearUser} setUser={setUser} />}
     />
+    <Route
+      exact
+      path="/sign-up"
+      render={props => <Register {...props} items={items} user={user}/>}
+    />
   </Switch>
 );
 
