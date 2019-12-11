@@ -11,7 +11,7 @@ export default function Home(props) {
       return items.map(item => (
         <div key={item.id} className="item">
           <Link to={`/items/${item.id}`} user={user}>
-            <img src={item.photos} width="175px" alt={item.name} />
+            <img src={item.photos} alt={item.name} />
           </Link>
         </div>
       ));
