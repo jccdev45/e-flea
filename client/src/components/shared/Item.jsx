@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { getItemById } from "../../services/items";
 import Layout from "./Layout";
-import './styles/Item.css'
+import "./styles/Item.css";
 
 export default class Item extends Component {
   constructor(props) {
@@ -23,6 +23,10 @@ export default class Item extends Component {
 
   render() {
     const { item } = this.state;
+    // const priceToMoney = item.price;
+    // priceToMoney.toDecimal();
+    // console.log(item.price);
+    
 
     if (!item) {
       return <p>Loading</p>;
@@ -30,24 +34,26 @@ export default class Item extends Component {
 
     return (
       <Layout>
-        <div className="item-page">
+        <div className="column item-page">
           {/* COLUMN */}
           <h1>{item.name}</h1>
           {/* ROW */}
-          <div>
+          <div className="row item-info">
             {/* COLUMN */}
-            <div>
+            <div className="column">
               <div>
-                Seller: {item.userId} {/* user.username */} {/* user.email */}
+                Seller: {item.userId} username {/* user.username */} email{" "}
+                {/* user.email */}
               </div>
-              <div>{item.price}</div>
+              <h2>${item.price.toFixed(2)}</h2>
             </div>
             {/* COLUMN */}
-            <div>
+            <div className="column">
               {item.location}{" "}
               <img src={item.photos} alt={item.name} width="200px" />
             </div>
           </div>
+          <h2>Description:</h2>
           <p>{item.description}</p>
         </div>
       </Layout>
