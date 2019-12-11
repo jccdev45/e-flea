@@ -5,6 +5,7 @@ import Item from "../components/shared/Item";
 import About from "../screens/About";
 import Login from "../screens/Login";
 import Register from "../screens/Register";
+import Profile from "../screens/Profile"
 
 const Routes = ({ user, items, setUser }) => (
   <Switch>
@@ -18,6 +19,12 @@ const Routes = ({ user, items, setUser }) => (
       path="/items/:id"
       user={user}
       render={props => <Item {...props} />}
+    />
+     <Route
+      exact
+      path="/users/:id"
+      user={user}
+      render={props => <Profile {...props} />}
     />
     <Route exact path="/about" component={About} />
     <Route

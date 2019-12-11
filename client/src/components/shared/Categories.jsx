@@ -4,7 +4,7 @@ class Categories extends React.Component {
     constructor() {
         super()
         this.state = {
-            value: 'All'
+            value: null
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -21,7 +21,7 @@ class Categories extends React.Component {
            <form onSubmit={this.handleSubmit}>
                <label>
                    Select a category
-                   <select value={this.state.value} onChange={this.handleChange}>
+                   <select className = 'categoryselect' value={this.state.value} onChange={this.handleChange}>
                    <option value = 'all'>All</option>
                    <option value = 'art+antiques'>Art and Antiques</option>
                    <option value = 'auto-cars-motorcycles'>Auto - Cars, Motorcycles</option>
