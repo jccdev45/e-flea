@@ -8,6 +8,7 @@ import Register from "../screens/Register";
 import ItemSale from "../screens/ItemSale";
 import SignOut from "../screens/SignOut";
 import ItemUpdate from "../screens/ItemUpdate"
+import Profile from "../screens/Profile"
 
 const Routes = ({ user, items, setUser, addItem, clearUser }) => (
   <Switch>
@@ -21,6 +22,12 @@ const Routes = ({ user, items, setUser, addItem, clearUser }) => (
       path="/items/:id"
       user={user}
       render={props => <Item {...props} />}
+    />
+     <Route
+      exact
+      path="/users/:id"
+      user={user}
+      render={props => <Profile {...props} />}
     />
     <Route exact path="/about" component={About} />
     <Route
@@ -55,7 +62,6 @@ const Routes = ({ user, items, setUser, addItem, clearUser }) => (
       path="/items/:id/edit"
       render={props => <ItemUpdate {...props} />}
     />
-
 
   </Switch>
 );
