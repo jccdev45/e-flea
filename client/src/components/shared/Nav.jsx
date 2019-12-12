@@ -2,9 +2,8 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "./styles/Nav.css";
 
-const authenticatedNav = ({ user }) => (
+const authenticatedNav = (
   <div className="loggedin-img">
-    <img src={user.photo} alt='usrpic' />
     <p>logged in</p>
   </div>
 );

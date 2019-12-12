@@ -1,0 +1,21 @@
+.form-container form {
+    margin: 0 1rem;
+}
+
+
+input, textarea {
+    border-radius: 10px;
+    width: 50%;
+}
+
+input {
+    word-wrap: break-word;
+}
+
+.form-container form span.row {
+    justify-content: space-between;
+}
+
+.form-input-desc {
+    width: 40%;
+}

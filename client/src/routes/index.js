@@ -44,7 +44,7 @@ const Routes = ({ user, items, setUser, addItem, clearUser }) => (
     <Route
       exact
       path="/create-item"
-      render={props => <ItemSale {...props} addItem={addItem} />}
+      render={props => <ItemSale {...props} addItem={addItem} user={user} />}
     />
     <Route
       exact
