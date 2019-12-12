@@ -46,7 +46,7 @@ class ItemUpdate extends Component {
 
         updateItem(this.props.match.params.id)
             .then(()=> this.setState({ updated: true }))
-            .catch(consol.error)
+            .catch(console.error)
     }
 
 
@@ -70,3 +70,5 @@ class ItemUpdate extends Component {
         )
     }
 }
+
+export default ItemUpdate

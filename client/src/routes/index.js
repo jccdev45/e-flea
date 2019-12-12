@@ -9,6 +9,7 @@ import ItemSale from "../screens/ItemSale";
 import SignOut from "../screens/SignOut";
 import ItemUpdate from "../screens/ItemUpdate"
 import Profile from "../screens/Profile"
+import AuthenticatedRoute from './AuthenticatedRoute'
 
 const Routes = ({ user, items, setUser, addItem, clearUser }) => (
   <Switch>

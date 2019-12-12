@@ -2,11 +2,12 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "./styles/Nav.css";
 
-const authenticatedNav = (
-    <div className = 'loggedin-img'>
-      <img src='' alt='userimg'/>
-    </div>
-  )
+const authenticatedNav = ({ user }) => (
+  <div className="loggedin-img">
+    <img src={user.photo} alt='usrpic' />
+    <p>logged in</p>
+  </div>
+);
 
 const unauthenticatedNav = (
   <div className="nav">
@@ -54,14 +55,12 @@ const alwaysNav = (
   </div>
 );
 
-export default function Nav() {
-  return (
-    <div className="header">
-      <div className="nav-container">
-        {alwaysNav}
-        {unauthenticatedNav}
-      </div>
+const Nav = ({ user }) => (
+  <div className="header">
+    <div className="nav-container">
+      {alwaysNav}
+      {user ? authenticatedNav : unauthenticatedNav}
     </div>
-  );
-}
-
+  </div>
+);
+export default Nav;
