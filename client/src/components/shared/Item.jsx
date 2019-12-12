@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { getItemById } from "../../services/items";
+import { getItemById, getUserById } from "../../services/items";
 import Layout from "./Layout";
+import { Link } from "react-router-dom";
 import "./styles/Item.css";
 
 export default class Item extends Component {
@@ -8,7 +9,9 @@ export default class Item extends Component {
     super(props);
 
     this.state = {
-      item: null
+      item: null,
+      user: null
+
     };
   }
 
@@ -16,19 +19,25 @@ export default class Item extends Component {
     try {
       const resp = await getItemById(this.props.match.params.id);
       this.setState({ item: resp });
+    
+      const resp2 = await getUserById(this.state.item.userId);
+      this.setState({ user: resp2 })
     } catch (error) {
       console.error(error);
+    
     }
   }
 
   render() {
-    const { item } = this.state;
+    
+    const { item, user } = this.state;
+    console.log(item)
+    console.log(user)
     // const priceToMoney = item.price;
     // priceToMoney.toDecimal();
     // console.log(item.price);
-    
 
-    if (!item) {
+    if (!item || !user) {
       return <p>Loading</p>;
     }
 
@@ -41,11 +50,12 @@ export default class Item extends Component {
           <div className="row item-info">
             {/* COLUMN */}
             <div className="column">
-              <div>
-                Seller: {item.userId} username {/* user.username */} email{" "}
-                {/* user.email */}
+              <div className='sellerinfo'>
+                Seller: <Link to={`/users/${user.id}`} user={user}>{user.username}</Link>
+                <br/>
+                Contact: {user.email}
               </div>
-              <h2>${item.price.toFixed(2)}</h2>
+              <h2 className='price'>${item.price.toFixed(2)}</h2>
             </div>
             {/* COLUMN */}
             <div className="column">
