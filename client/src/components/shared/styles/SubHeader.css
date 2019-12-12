@@ -4,7 +4,6 @@
     padding: 20px;
     align-items: center;
     font-family: 'Sinhala MN';
-    justify-content: space-between;
     height: 10vh;
 }    
 .subheader-text, .categories {
@@ -25,11 +24,6 @@ p {
 }
 
 
-.styling-div {
-    display: flex;
-    flex-direction: column;
-}
-
 select {
     margin-top: 10px;
     padding: 5px;
@@ -40,4 +34,26 @@ select {
 
 label {
     color: rgba(116, 0, 198)
+}
+@media only screen and (min-width: 1024px) {
+
+    .styling-div {
+        display: flex;
+        flex-direction: column;
+        margin-left: 800px
+    }
+
+
+
+
+}
+
+
+@media only screen and (max-width: 812px) {
+
+
+    .styling-div {
+        margin-left: 100px;
+    }
+
 }

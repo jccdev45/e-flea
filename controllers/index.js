@@ -135,7 +135,7 @@ const updateItem = async (req, res) => {
   try {
     const { id } = req.params;
     const { item } = req.body;
-    const [updated] = await Item.updated(item, {
+    const [updated] = await Item.update(item, {
       where: { id: id }
     });
     if (updated) {
