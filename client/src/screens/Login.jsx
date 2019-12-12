@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { signInUser } from "../services/auth";
 import Layout from "../components/shared/Layout";
 
+import "./styles/Auth.css";
 
 class Login extends Component {
   constructor() {

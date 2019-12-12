@@ -2,8 +2,9 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "./styles/Nav.css";
 
-const authenticatedNav = (
+const authenticatedNav = ({ user }) => (
   <div className="loggedin-img">
+    <img src={user.photo} alt='usrpic' />
     <p>logged in</p>
   </div>
 );
@@ -44,8 +45,9 @@ const alwaysNav = (
       <NavLink className="nav" activeClassName="active" to="/create-item">
         Sell Now
       </NavLink>
-      <div className="sign-out">
-        <NavLink className="nav" to="/sign-out">
+
+      <div className = 'sign-out'>
+        <NavLink className='nav' to="/sign-out">
           Sign Out
         </NavLink>
       </div>

@@ -9,11 +9,9 @@ const apiUrls = {
   development: "http://localhost:3000/api"
 };
 
-window.location.hostname === "localhost"
-  ? (apiUrl = apiUrls.development)
-  : (apiUrl = apiUrls.production);
+window.location.hostname === "localhost" ? (apiUrl = apiUrls.development): (apiUrl = apiUrls.production);
 
-const api = Axios.create({
+export const api = Axios.create({
   baseURL: apiUrl,
   headers: {
     Authorization: `Bearer ${JwtToken}`,

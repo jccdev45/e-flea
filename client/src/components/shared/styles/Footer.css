@@ -2,9 +2,11 @@ footer {
     background-color: #998FC7;
     width: 100%;
     height: 60px;
+    display: flex;
 }
 
 .footer-text {
+    font-family: 'Sinhala MN';
     text-align: center;
     margin: auto;
 }

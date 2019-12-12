@@ -5,10 +5,13 @@ import Item from "../components/shared/Item";
 import About from "../screens/About";
 import Login from "../screens/Login";
 import Register from "../screens/Register";
-import Profile from "../screens/Profile";
+import ItemSale from "../screens/ItemSale";
 import SignOut from "../screens/SignOut";
+import ItemUpdate from "../screens/ItemUpdate"
+import Profile from "../screens/Profile"
+import AuthenticatedRoute from './AuthenticatedRoute'
 
-const Routes = ({ user, items, setUser, clearUser }) => (
+const Routes = ({ user, items, setUser, addItem, clearUser }) => (
   <Switch>
     <Route
       exact
@@ -40,10 +43,27 @@ const Routes = ({ user, items, setUser, clearUser }) => (
     />
     <Route
       exact
+      path="/create-item"
+      render={props => <ItemSale {...props} addItem={addItem} />}
+    />
+    <Route
+      exact
       path="/sign-out"
       user={user}
       render={props => <SignOut {...props} clearUser={clearUser} />}
-      />
+    />
+    <Route
+      exact
+      path="/sign-up"
+      render={props => <Register {...props} items={items} user={user} />}
+    />
+    <AuthenticatedRoute
+      exact
+      user={user}
+      path="/items/:id/edit"
+      render={props => <ItemUpdate {...props} />}
+    />
+
   </Switch>
 );
 
