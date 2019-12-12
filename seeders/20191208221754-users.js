@@ -1,6 +1,6 @@
 const faker = require('faker');
 
-const users = [...Array(16)].map((user) => (
+const users = [...Array(8)].map((user) => (
   {
     email: faker.internet.email(),
     username: faker.internet.userName(),
