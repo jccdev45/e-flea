@@ -11,7 +11,6 @@ export default class Item extends Component {
     this.state = {
       item: null,
       user: null
-
     };
   }
 
@@ -19,23 +18,17 @@ export default class Item extends Component {
     try {
       const resp = await getItemById(this.props.match.params.id);
       this.setState({ item: resp });
-    
+
       const resp2 = await getUserById(this.state.item.userId);
-      this.setState({ user: resp2 })
+      this.setState({ user: resp2 });
     } catch (error) {
       console.error(error);
-    
     }
   }
 
   render() {
-    
     const { item, user } = this.state;
-    console.log(item)
-    console.log(user)
-    // const priceToMoney = item.price;
-    // priceToMoney.toDecimal();
-    // console.log(item.price);
+    // const currentUser = this.props.location.state.user.id;
 
     if (!item || !user) {
       return <p>Loading</p>;
@@ -44,28 +37,34 @@ export default class Item extends Component {
     return (
       <Layout>
         <div className="column item-page">
-          {/* COLUMN */}
           <h1>{item.name}</h1>
-          {/* ROW */}
-          <div className="row item-info">
-            {/* COLUMN */}
-            <div className="column">
-              <div className='sellerinfo'>
-                Seller: <Link to={`/users/${user.id}`} user={user}>{user.username}</Link>
-                <br/>
-                Contact: {user.email}
-              </div>
-              <h2 className='price'>${item.price.toFixed(2)}</h2>
-            </div>
-            {/* COLUMN */}
-            <div className="column">
-              {item.location}{" "}
-              <img src={item.photos} alt={item.name} width="200px" />
-            </div>
+          <h2 className="price">${item.price.toFixed(2)}</h2>
+          <h3>{item.location}</h3>
+          <hr />
+          <div className="row seller-info">
+            <span className="column">
+              <span>Seller: </span>
+              <Link to={`/users/${user.id}`} user={user}>
+                {user.username}
+              </Link>
+            </span>
+            <span className="column">
+              <span>Contact: </span>
+              <a href={`mailto:${user.email}`}>{user.email}</a>
+            </span>
+          </div>
+          <div className="row item-detail-photos">
+            <img src={item.photos} alt={item.name} />
           </div>
           <h2>Description:</h2>
           <p>{item.description}</p>
         </div>
+        {/* {user.id === item.userId ? (
+          <div className="row update-delete">
+            <button>Update Item</button>
+            <button>Delete Item</button>
+          </div>
+        ) : null} */}
       </Layout>
     );
   }
