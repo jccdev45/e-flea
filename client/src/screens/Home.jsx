@@ -10,14 +10,15 @@ export default function Home(props) {
     if (items) {
       return items.map(item => (
         <div key={item.id} className="item">
-          <Link
+          <Link to={`/items/${item.id}`} user={user}>
+          {/* <Link
             to={{
               pathname: `/items/${item.id}`,
               state: {
                 user: user
               }
             }}
-          >
+          > */}
             <img src={item.photos} alt={item.name} />
           </Link>
         </div>

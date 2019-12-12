@@ -14,10 +14,17 @@ export default class ItemSale extends Component {
         location: "",
         description: "",
         photo: '',
-        price: '',
+        price: null,
+        userId: null
       },
       newItem: null
     };
+  }
+
+  componentDidMount() {
+    const item = {...this.state.item}
+    item.userId = this.props.user.id;
+    this.setState({ item })
   }
 
   handleChange = e => {
@@ -43,6 +50,7 @@ export default class ItemSale extends Component {
   render() {
     const { handleChange, handleSubmit } = this;
     const { createdItem, item } = this.state;
+    // console.log(this.props)
 
     if (createdItem) {
       return <Redirect to={'/'} />;
@@ -54,6 +62,7 @@ export default class ItemSale extends Component {
           item={item}
           handleChange={handleChange}
           handleSubmit={handleSubmit}
+          user={this.state.userId}
           cancelPath="/"
         />
       </Layout>

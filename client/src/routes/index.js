@@ -7,9 +7,8 @@ import Login from "../screens/Login";
 import Register from "../screens/Register";
 import ItemSale from "../screens/ItemSale";
 import SignOut from "../screens/SignOut";
-import ItemUpdate from "../screens/ItemUpdate"
-import Profile from "../screens/Profile"
-import AuthenticatedRoute from './AuthenticatedRoute'
+import ItemUpdate from "../screens/ItemUpdate";
+import Profile from "../screens/Profile";
 
 const Routes = ({ user, items, setUser, addItem, clearUser }) => (
   <Switch>
@@ -21,14 +20,12 @@ const Routes = ({ user, items, setUser, addItem, clearUser }) => (
     <Route
       exact
       path="/items/:id"
-      user={user}
-      render={props => <Item {...props} />}
+      render={props => <Item {...props} user={user} />}
     />
-     <Route
+    <Route
       exact
       path="/users/:id"
-      user={user}
-      render={props => <Profile {...props} />}
+      render={props => <Profile {...props} user={user} />}
     />
     <Route exact path="/about" component={About} />
     <Route
@@ -49,21 +46,13 @@ const Routes = ({ user, items, setUser, addItem, clearUser }) => (
     <Route
       exact
       path="/sign-out"
-      user={user}
-      render={props => <SignOut {...props} clearUser={clearUser} />}
+      render={props => <SignOut {...props} clearUser={clearUser} user={user} />}
     />
     <Route
       exact
-      path="/sign-up"
-      render={props => <Register {...props} items={items} user={user} />}
-    />
-    <Route
-      exact
-      user={user}
       path="/items/:id/edit"
-      render={props => <ItemUpdate {...props} />}
+      render={props => <ItemUpdate {...props} user={user} />}
     />
-
   </Switch>
 );
 
