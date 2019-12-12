@@ -3,19 +3,19 @@ import { NavLink } from "react-router-dom";
 import "./styles/Nav.css";
 
 const authenticatedNav = (
-  <div className="loggedin-img">
-    <p>logged in</p>
+  <div className='row sign-out'>
+    <NavLink className='nav' to="/sign-out">
+      Sign Out
+    </NavLink>
   </div>
 );
 
 const unauthenticatedNav = (
   <div className="nav">
-    <div className="nav-signin">
+    <div className="nav-signin row">
       <NavLink className="nav" activeClassName="active" to="/sign-in">
         Log In
       </NavLink>
-    </div>
-    <div className="nav-signup">
       <NavLink className="nav" activeClassName="active" to="/sign-up">
         Sign Up
       </NavLink>
@@ -24,39 +24,28 @@ const unauthenticatedNav = (
 );
 
 const alwaysNav = (
-  <div className="nav">
-    <div className="nav-home">
-      <NavLink className="nav navlink-home" to="/" activeClassName="">
-        E•Flea
-      </NavLink>
-    </div>
-    <div className="nav-about">
+  <div className="row alwaysnav">
       <NavLink className="nav" activeClassName="active" to="/about">
         About
       </NavLink>
-    </div>
-    <div className="nav-search">
       <NavLink className="nav" to="/search">
         Search
       </NavLink>
-    </div>
-    <div className="nav-sellnow">
       <NavLink className="nav" activeClassName="active" to="/create-item">
-        Sell Now
+        Sell
       </NavLink>
-
-      <div className = 'sign-out'>
-        <NavLink className='nav' to="/sign-out">
-          Sign Out
-        </NavLink>
-      </div>
-    </div>
   </div>
 );
 
 const Nav = ({ user }) => (
   <div className="header">
-    <div className="nav-container">
+    <div className="nav-home">
+      <NavLink className="nav navlink-home" to="/" activeClassName="">
+        E•Flea
+      </NavLink>
+      {user && <img className='usrpic' src={user.photo} width='75px'alt='usrpic' />}
+    </div>
+    <div className="column nav-container">
       {alwaysNav}
       {user ? authenticatedNav : unauthenticatedNav}
     </div>
