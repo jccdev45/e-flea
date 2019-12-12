@@ -1,25 +1,42 @@
-import React from 'react'
-import { Route, Redirect } from 'react-router-dom'
+import React, { Component } from "react";
+import { Route, Redirect } from "react-router-dom";
 
-const AuthenticatedRoute = ({
-  component: Component,
-  children,
-  user,
-  render,
-  ...rest
-}) => {
-  if (user && render) {
-    return <Route {...rest} render={render} />
-  } else {
-    return (
-      <Route
-        {...rest}
-        render={props =>
-          user ? <Component {...props} /> : <Redirect to="/" />
-        }
-      />
-    )
-  }
-}
+// const AuthenticatedRoute = ({
+//   component: Component,
+//   children,
+//   user,
+//   render,
+//   ...rest
+// }) => {
+//   if (user && render) {
+//     return <Route {...rest} render={render} />
+//   } else {
+//     return (
+//       <Route
+//         {...rest}
+//         render={props =>
+//           user ? <Component {...props} /> : <Redirect to="/" />
+//         }
+//       />
+//     )
+//   }
+// }
 
-export default AuthenticatedRoute
+const AuthenticatedRoute = ({ component: Component, ...rest }) => (
+  <Route
+    {...rest}
+    render={props =>
+      localStorage.getItem("token") ? (
+        <Component {...props} />
+      ) : (
+        <Redirect
+          to={{
+            pathname: "/sign-in",
+            state: { from: props.location }
+          }}
+        />
+      )
+    }
+  />
+);
+export default AuthenticatedRoute;
