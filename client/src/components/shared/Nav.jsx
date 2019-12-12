@@ -2,6 +2,12 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "./styles/Nav.css";
 
+const authenticatedNav = (
+    <div className = 'loggedin-img'>
+      <img src='' alt='userimg'/>
+    </div>
+  )
+
 const unauthenticatedNav = (
   <div className="nav">
     <div className="nav-signin">
@@ -38,9 +44,16 @@ const alwaysNav = (
       <NavLink className="nav" activeClassName="active" to="/create-item">
         Sell Now
       </NavLink>
+
+      <div className = 'sign-out'>
+        <NavLink className='nav' to="/sign-out">
+          Sign Out
+        </NavLink>
+      </div>
     </div>
   </div>
 );
+
 export default function Nav() {
   return (
     <div className="header">
@@ -51,3 +64,4 @@ export default function Nav() {
     </div>
   );
 }
+

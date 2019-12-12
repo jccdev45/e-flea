@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Redirect } from 'react-router-dom'
 import Layout from "../components/shared/Layout";
 import ItemForm from "../components/shared/ItemForm";
 import { createItem } from "../services/items";
@@ -9,11 +10,11 @@ export default class ItemSale extends Component {
 
     this.state = {
       item: {
-        title: "",
+        name: "",
         location: "",
         description: "",
-        images: [],
-        price: null
+        photo: '',
+        price: '',
       },
       newItem: null
     };
@@ -33,7 +34,7 @@ export default class ItemSale extends Component {
     createItem(this.state.item)
       .then(res =>
         res.status === 201
-          ? this.setState({ createdItem: res.data.item })
+          ? this.setState({ newItem: res.data.item })
           : null
       )
       .catch(console.error);
@@ -44,7 +45,7 @@ export default class ItemSale extends Component {
     const { createdItem, item } = this.state;
 
     if (createdItem) {
-      return;
+      return <Redirect to={'/'} />;
     }
 
     return (
