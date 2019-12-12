@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { signUp, signInUser } from "../services/auth";
 import Layout from "../components/shared/Layout";
 
+// import "./styles/Auth.css";
+
 class Register extends Component {
   constructor() {
     super();
@@ -54,7 +56,11 @@ class Register extends Component {
         </button>
       );
     } else {
-      return <button type="submit">Register</button>;
+      return (
+        <button className="auth-button" type="submit">
+          Register
+        </button>
+      );
     }
   };
 
@@ -63,53 +69,51 @@ class Register extends Component {
 
     return (
       <Layout>
-        <div className="row">
-          <div className="column form-container">
-            <h3>Sign Up</h3>
-            <form onSubmit={this.onSignUp} className="column">
-              <input
-                required
-                type="text"
-                name="username"
-                value={username}
-                placeholder="Username"
-                onChange={this.handleChange}
-              />
-              <input
-                required
-                type="password"
-                name="password"
-                value={password}
-                placeholder="Password"
-                onChange={this.handleChange}
-              />
-              <input
-                required
-                type="password"
-                name="passwordConfirmation"
-                value={passwordConfirmation}
-                placeholder="Confirm Password"
-                onChange={this.handleChange}
-              />
-              <input
-                required
-                type="text"
-                name="email"
-                value={email}
-                placeholder="Email"
-                onChange={this.handleChange}
-              />
-              <input
-                required
-                type="text"
-                name="ProfileUrl"
-                value={url}
-                placeholder="Profile Picture URL"
-                onChange={this.handleChange}
-              />
-              {this.renderError()}
-            </form>
-          </div>
+        <div className="column form-background">
+          <h3>Sign Up</h3>
+          <form className="column auth-form" onSubmit={this.onSignUp}>
+            <input
+              required
+              type="text"
+              name="username"
+              value={username}
+              placeholder="Username"
+              onChange={this.handleChange}
+            />
+            <input
+              required
+              type="text"
+              name="password"
+              value={password}
+              placeholder="Password"
+              onChange={this.handleChange}
+            />
+            <input
+              required
+              type="text"
+              name="passwordConfirmation"
+              value={passwordConfirmation}
+              placeholder="Confirm Password"
+              onChange={this.handleChange}
+            />
+            <input
+              required
+              type="text"
+              name="email"
+              value={email}
+              placeholder="Email"
+              onChange={this.handleChange}
+            />
+            <input
+              required
+              type="text"
+              name="ProfileUrl"
+              value={url}
+              placeholder="Profile Picture URL"
+              onChange={this.handleChange}
+            />
+            {this.renderError()}
+          </form>
         </div>
       </Layout>
     );
