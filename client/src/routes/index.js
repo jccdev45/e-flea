@@ -5,9 +5,10 @@ import Item from "../components/shared/Item";
 import About from "../screens/About";
 import Login from "../screens/Login";
 import Register from "../screens/Register";
-import Profile from "../screens/Profile"
+import Profile from "../screens/Profile";
+import SignOut from "../screens/SignOut";
 
-const Routes = ({ user, items, setUser }) => (
+const Routes = ({ user, items, setUser, clearUser }) => (
   <Switch>
     <Route
       exact
@@ -37,6 +38,12 @@ const Routes = ({ user, items, setUser }) => (
       path="/sign-up"
       render={props => <Register {...props} setUser={setUser} />}
     />
+    <Route
+      exact
+      path="/sign-out"
+      user={user}
+      render={props => <SignOut {...props} clearUser={clearUser} />}
+      />
   </Switch>
 );
 

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { getItems } from "../services/items";
 // import Nav from "../components/shared/Nav";
 import Routes from "../routes";
+import Nav from "./shared/Nav"
 
 export default class Container extends Component {
   constructor(props) {
@@ -31,7 +32,7 @@ export default class Container extends Component {
     const { user, items } = this.state;
     return (
       <>
-        {/* <Nav user={user} /> */}
+        <Nav user={user} />
         <main>
           <Routes
             items={items}
