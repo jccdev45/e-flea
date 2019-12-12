@@ -57,7 +57,7 @@ const Routes = ({ user, items, setUser, addItem, clearUser }) => (
       path="/sign-up"
       render={props => <Register {...props} items={items} user={user} />}
     />
-    <AuthenticatedRoute
+    <Route
       exact
       user={user}
       path="/items/:id/edit"

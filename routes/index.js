@@ -14,6 +14,7 @@ router.get('/items/:id', controllers.getItemById)
 router.post('/items', controllers.createItem)
 router.put('/items/:id', restrict, controllers.updateItem)
 router.delete('/items/:id', restrict, controllers.deleteItem)
+// router.get('/items/:id', controllers.getAllItemsByUserId)
 
 module.exports = router
 

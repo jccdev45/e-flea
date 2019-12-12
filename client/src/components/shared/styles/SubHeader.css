@@ -1,10 +1,11 @@
 .subheader {
     display: flex;
     background: #f9f5ff;
-    margin: 10px auto;
     padding: 20px;
-    text-align: center;
+    align-items: center;
     font-family: 'Sinhala MN';
+    justify-content: space-between;
+    height: 10vh;
 }    
 .subheader-text, .categories {
     display: flex;
@@ -14,6 +15,29 @@
     justify-content: flex-start;
 }
 .categories {
-    justify-content: flex-end;
+    justify-content: flex-start;
 
+}
+p {
+    font-family: "Sinhala MN";
+    color: rgba(116, 0, 198)
+
+}
+
+
+.styling-div {
+    display: flex;
+    flex-direction: column;
+}
+
+select {
+    margin-top: 10px;
+    padding: 5px;
+    width: 50%;
+    border-style: solid;
+    border-color:black;
+}
+
+label {
+    color: rgba(116, 0, 198)
 }

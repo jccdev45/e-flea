@@ -2,6 +2,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   margin: 0 auto;
+  padding-top: 100px;
 }
 
 .item {
@@ -25,4 +26,22 @@
 .item-info {
   justify-content: space-between;
   /* margin: 0 2rem; */
+}
+
+
+
+@media only screen and (min-width: 1024px) {
+
+  p   {
+    font-family: "Sinhala MN"
+    
+
+}
+
+  .items {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    margin: 0 auto;
+  }
+
 }

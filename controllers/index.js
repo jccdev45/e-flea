@@ -8,7 +8,7 @@ const TOKEN_KEY = "jordanandrewyev";
 const signUp = async (req, res) => {
   try {
     console.log(":)");
-    const { username, email, password, firstName, lastName, photo } = req.body;
+    const { username, email, password, photo } = req.body;
     const password_digest = await bcrypt.hash(password, SALT_ROUNDS);
     const user = await User.create({
       username,
@@ -82,7 +82,7 @@ const createItem = async (req, res) => {
     console.log("req.body:", req.body);
     const createdItem = await Item.create(req.body);
     return res.status(201).json({
-        createdItem,
+      createdItem,
     });
   } catch (error) {
     console.log(error);
@@ -164,6 +164,30 @@ const deleteItem = async (req, res) => {
 };
 
 
+const getAllItemsbyUserId = async (req, res) => {
+
+
+  const items = await Item.findAll({
+    include: [{
+      model: User
+    }]
+  });
+
+  console.log ('All items associated with their respective User', JSON.stringify(items, null, 4))
+}
+
+
+
+//     const items = await Item.findAll({
+//       include: [{
+//         model: User,
+//       }]
+//     });
+//   } catch (error) {
+//     return res.status(500).send(error.message);
+//   }
+// };
+
 
 module.exports = {
   signUp,
@@ -174,5 +198,6 @@ module.exports = {
   getItemById,
   getUserById,
   updateItem,
-  deleteItem
+  deleteItem,
+  getAllItemsbyUserId
 };
