@@ -3,6 +3,7 @@ import "./styles/ItemForm.css";
 
 const ItemForm = ({
   item,
+  user,
   handleSubmit,
   handleChange,
   cancelPath,
@@ -68,7 +69,7 @@ const ItemForm = ({
         />
         <p className="form-input-desc">Provide an asking price for buyers</p>
       </span>
-
+      <input type="hidden" name="userId" value={user} />
       <button type="submit">Submit</button>
       <button className="danger" onClick={() => history.push(cancelPath)}>
         Cancel

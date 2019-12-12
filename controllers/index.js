@@ -8,7 +8,7 @@ const TOKEN_KEY = "jordanandrewyev";
 const signUp = async (req, res) => {
   try {
     console.log(":)");
-    const { username, email, password, firstName, lastName, photo } = req.body;
+    const { username, email, password, photo } = req.body;
     const password_digest = await bcrypt.hash(password, SALT_ROUNDS);
     const user = await User.create({
       username,
@@ -57,6 +57,7 @@ const signIn = async (req, res) => {
     return res.status(500).json({ error: error.message });
   }
 };
+
 const changePassword = async (req, res) => {
   try {
     const { id } = req.params;
