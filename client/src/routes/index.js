@@ -7,6 +7,7 @@ import Login from "../screens/Login";
 import Register from "../screens/Register";
 import ItemSale from "../screens/ItemSale";
 import SignOut from "../screens/SignOut";
+import ItemUpdate from "../screens/ItemUpdate"
 
 const Routes = ({ user, items, setUser, addItem, clearUser }) => (
   <Switch>
@@ -42,12 +43,20 @@ const Routes = ({ user, items, setUser, addItem, clearUser }) => (
       path="/sign-out"
       user={user}
       render={props => <SignOut {...props} clearUser={clearUser} />}
-      />
+    />
     <Route
       exact
       path="/sign-up"
-      render={props => <Register {...props} items={items} user={user}/>}
+      render={props => <Register {...props} items={items} user={user} />}
     />
+    <AuthenticatedRoute
+      exact
+      user={user}
+      path="/items/:id/edit"
+      render={props => <ItemUpdate {...props} />}
+    />
+
+
   </Switch>
 );
 
