@@ -84,7 +84,7 @@ export default class Item extends Component {
         </div>
         {!this.props.user ? null : this.props.user.id === item.userId ? (
           <div className="row edit-btns">
-            {/* <Link to={`/items/${item.id}/edit`}>Update Item</Link> */}
+            <Link to={`/items/${item.id}/edit`}>Update Item</Link>
             <button onClick={this.confirm}>Delete Item</button>
           </div>
         ) : null}

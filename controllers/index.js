@@ -136,8 +136,8 @@ const getUserById = async (req, res) => {
 const updateItem = async (req, res) => {
   try {
     const { id } = req.params;
-    const { item } = req.body;
-    const [updated] = await Item.update(item, {
+    console.log("ITEM", req.body, "id", id)
+    const [updated] = await Item.update(req.body, {
       where: { id: id }
     });
     if (updated) {

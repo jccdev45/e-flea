@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 import { signUp, signInUser } from "../services/auth";
 import Layout from "../components/shared/Layout";
-
 
 // import "./styles/Auth.css";
 
@@ -15,6 +14,7 @@ class Register extends Component {
       email: "",
       password: "",
       passwordConfirmation: "",
+      photo: "",
       error: false,
       errorMsg: ""
     };
@@ -43,6 +43,7 @@ class Register extends Component {
           email: "",
           password: "",
           passwordConfirmation: "",
+          photo: "",
           error: true,
           errorMsg: "SignUp Failed"
         });
@@ -109,14 +110,15 @@ class Register extends Component {
             <input
               required
               type="text"
-              name="ProfileUrl"
+              name="photo"
               value={url}
               placeholder="Profile Picture URL"
               onChange={this.handleChange}
             />
             {this.renderError()}
           </form>
-          By clicking Register, you agree to the <Link to ={'/about'}>Terms and Condititions</Link>
+          By clicking Register, you agree to the{" "}
+          <Link to={"/about"}>Terms and Condititions</Link>
         </div>
       </Layout>
     );
