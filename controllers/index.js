@@ -168,7 +168,6 @@ const deleteItem = async (req, res) => {
 
 const getAllItemsbyUserId = async (req, res) => {
 
-
   const items = await Item.findAll({
     include: [{
       model: User
