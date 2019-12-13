@@ -13,24 +13,7 @@ class Categories extends React.Component {
   }
 
 
-
-
-  componentDidMount() {
-    fetch('https://http://localhost:3000/api/items')
-      .then(response => { return response.json()})
-      .then(item => this.setState({categories:item.items.category}))
-      
-  }
   
-
-
-  handleChange = e => {
-    this.setState({ value: e.target.value });
-    this.state.categories.filter(category => {
-      return category
-    })
-    
-  };
   handleSubmit = e => {
     e.preventDefault();
   };
