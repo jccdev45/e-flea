@@ -16,16 +16,27 @@
 }
 
 .item-page {
-  justify-content: center;
+  height: 100%;
 }
 
-.item-page h1 {
+.seller-info {
+  justify-content: space-evenly;
+}
+
+.item-page h1,
+h2,
+h3 {
   text-align: center;
+  margin: 0;
 }
 
-.item-info {
-  justify-content: space-between;
-  /* margin: 0 2rem; */
+hr {
+  width: 100vw;
+}
+
+.item-detail-photos img {
+  width: 40%;
+  height: auto;
 }
 
 

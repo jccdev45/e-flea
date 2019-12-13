@@ -57,6 +57,7 @@ const signIn = async (req, res) => {
     return res.status(500).json({ error: error.message });
   }
 };
+
 const changePassword = async (req, res) => {
   try {
     const { id } = req.params;
@@ -98,6 +99,7 @@ const getAllItems = async (req, res) => {
     return res.status(500).send(error.message);
   }
 };
+
 
 //do we need getAllUsers?
 

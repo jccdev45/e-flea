@@ -1,74 +1,68 @@
-import React, { Component } from 'react'
-import { Redirect } from 'react-router-dom'
-import { getItemById, updateItem } from '../services/items'
-import ItemForm from '../components/shared/ItemForm'
-
-
-
+import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
+import { getItemById, updateItem } from "../services/items";
+import ItemForm from "../components/shared/ItemForm";
 
 class ItemUpdate extends Component {
-    constructor(props) {
-        super(props)
+	constructor(props) {
+		super(props);
 
-        this.state = {
-            item: {
-                name: '',
-                description: '',
-                location: '',
-                price: '',
-                photos: '',
+		this.state = {
+			item: {
+				name: "",
+				description: "",
+				location: "",
+				price: "",
+				photos: ""
+			},
+			updated: false
+		};
+	}
 
+	async componentDidMount() {
+		try {
+			const item = await getItemById(this.props.match.params.id);
+			this.setState({ item });
+		} catch (err) {
+			console.error(err);
+		}
+	}
 
-            },
-            updated: false
-        }
-    }
+	handleChange = event => {
+		const updatedField = { [event.target.name]: event.target.value };
 
-    async componentDidMount() {
-        try {
-            const item = await getItemById(this.props.match.params.id)
-            this.setState({ item })
-        }   catch (err) {
-            console.error(err)
-        }
-    }
+		const editedItem = Object.assign(this.state.item, updatedField);
 
-    handleChange = event => {
-        const updatedField = {[event.target.name]: event.target.value }
+		this.setState({ item: editedItem });
+	};
 
-        const editedItem = Object.assign(this.state.item, updatedField)
+	handleSubmit = event => {
+		event.preventDefault();
 
-        this.setState ({ item: editedItem })
-    }
+		updateItem(this.props.match.params.id)
+			.then(() => this.setState({ updated: true }))
+			.catch(console.error);
+	};
 
-    handleSubmit = event => {
-        event.preventDefault()
+	render() {
+		const { item, updated } = this.state;
+		const { handleChange, handleSubmit } = this;
 
-        updateItem(this.props.match.params.id)
-            .then(()=> this.setState({ updated: true }))
-            .catch(console.error)
-    }
+		if (updated) {
+			return <Redirect to={`/items/${this.props.match.params.id}`} />;
+		}
 
-
-    render() {
-        const { item, updated } = this.state
-        const { handleChange, handleSubmit } = this
-
-        if (updated) {
-            return <Redirect to={`/items/${this.props.match.params.id}`} />
-        }
-
-        return (
-            <>
-                <ItemForm
-                item={item}
-                handleChange={handleChange}
-                handleSubmit={handleSubmit}
-                cancelPath={`/items/${this.props.match.params.id}`}
-            />
-            </>
-        )
-    }
+		return (
+			<>
+				<ItemForm
+					item={item}
+					handleChange={handleChange}
+					handleSubmit={handleSubmit}
+					cancelPath={`/items/${this.props.match.params.id}`}
+				/>
+			</>
+		);
+	}
 }
 
-export default ItemUpdate
+export default ItemUpdate;

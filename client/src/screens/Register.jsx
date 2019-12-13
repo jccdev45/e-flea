@@ -1,6 +1,8 @@
 import React, { Component } from "react";
+import { Link } from 'react-router-dom'
 import { signUp, signInUser } from "../services/auth";
 import Layout from "../components/shared/Layout";
+
 
 // import "./styles/Auth.css";
 
@@ -114,6 +116,7 @@ class Register extends Component {
             />
             {this.renderError()}
           </form>
+          By clicking Register, you agree to the <Link to ={'/about'}>Terms and Condititions</Link>
         </div>
       </Layout>
     );
