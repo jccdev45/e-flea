@@ -1,73 +1,57 @@
 .subheader {
-    display: flex;
-    background: #f9f5ff;
-    padding: 20px;
-    justify-content: space-between;
-    align-self: center;
-    font-family: 'Sinhala MN';
-    height: 100%;
-    width: 100%
-}    
+	display: flex;
+	background: #f9f5ff;
+	padding: 20px;
+	justify-content: space-between;
+	align-self: center;
+	font-family: "Sinhala MN";
+	/* height: 100%; */
+	/* outline: 1px solid red; */
+	/* width: 100% */
+}
+
 .subheader-text {
-    display: flex;
-    flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
 
 .categories {
-   align-self: center;
-
+	align-self: center;
 }
 p {
-    font-family: "Sinhala MN";
-    color: rgba(116, 0, 198)
-
+	font-family: "Sinhala MN";
+	color: rgba(116, 0, 198);
 }
 
 form {
-    display: flex;
-    flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
 
-
 select {
-    margin-top: 10px;
-    padding: 5px;
-    width: 50%;
-    border-style: solid;
-    border-color:black;
+	margin-top: 10px;
+	padding: 5px;
+	width: 50%;
+	border-style: solid;
+	border-color: black;
 }
 
 label {
-    color: rgba(116, 0, 198)
+	color: rgba(116, 0, 198);
 }
 @media only screen and (min-width: 1024px) {
-
-    .styling-div {
-        display: flex;
-        flex-direction: column;
-
-    }
-
-
-
-
+	.styling-div {
+	display: flex;
+	flex-direction: column;
+	}
 }
 
-
-
 @media only screen and (max-width: 812px) {
+	.categories {
+	height: 20px;
+	}
 
-
-
-
-    .categories {
-        
-        height: 20px;
-
-    }
-
-    .styling-div {
-        margin-left: 100px;
-    }
-
+	.styling-div {
+	margin-left: 100px;
+	}
 }
