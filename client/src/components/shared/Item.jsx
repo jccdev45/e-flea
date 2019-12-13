@@ -34,8 +34,6 @@ export default class Item extends Component {
 
   render() {
     const { item, user } = this.state;
-    // const currentUser = this.props.user.id;
-    // console.log(this.props)
 
     if (!item || !user) {
       return <p>Loading</p>;
@@ -51,9 +49,9 @@ export default class Item extends Component {
           <div className="row seller-info">
             <span className="column">
               <span>Seller: </span>
-              {/* <Link to={`/users/${user.id}`} user={user}>
+              <Link to={`/users/${user.id}`} user={user}>
                 {user.username}
-              </Link> */}
+              </Link>
             </span>
             <span className="column">
               <span>Contact: </span>
@@ -66,13 +64,10 @@ export default class Item extends Component {
           <h2>Description:</h2>
           <p>{item.description}</p>
         </div>
-        {/* <Link to={`/items/${item.id}/edit`}>
-          Update Item
-        </Link>
-        <button onClick={this.destroy}>Delete Item</button> */}
         {!this.props.user ? null : this.props.user.id === item.userId ? (
           <div className="row update-delete">
-            <button>Update Item</button>
+            {/* <button>Update Item</button> */}
+            <Link to={`/items/${item.id}/edit`}>Update Item</Link>
             <button>Delete Item</button>
           </div>
         ) : null}

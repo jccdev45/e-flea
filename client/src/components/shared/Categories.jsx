@@ -17,32 +17,25 @@ class Categories extends React.Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <label htmlFor="categoryselect">Select a category</label>
+        <label htmlFor="category">Select a category</label>
         <select
           className="categoryselect"
-          name="categoryselect"
+          name="category"
           value={this.state.value}
           onChange={this.handleChange}
         >
           <option value="all">All</option>
-          <option value="art+antiques">Art and Antiques</option>
-          <option value="auto-cars-motorcycles">
+          <option value="Art & Antiques">Art and Antiques</option>
+          <option value="Auto - Cars, Motorcycles">
             Auto - Cars, Motorcycles
           </option>
-          <option value="auto-parts">Auto - Parts</option>
-          <option value="bikes-ebikes-scooters">
-            Bikes, E-Bikes, Scooters
-          </option>
-          <option value="books">Books, Magazines, Comics</option>
-          <option value="cell-tablets">Cell Phones, Tablets, Mobile</option>
-          <option value="clothing-shoes">Clothes and Shoes</option>
-          <option value="electronics">
+          <option value="Cell Phones, Tablets, Smart Mobile Devices">Cell Phones, Tablets, Mobile</option>
+          <option value="Clothing & Shoes">Clothes and Shoes</option>
+          <option value="Electronics, Computers, Appliances">
             Electronics, Computers, Appliances
           </option>
-          <option value="free">Free</option>
-          <option value="household-pets-garden">Household, Pets, Garden</option>
-          <option value="musical-instruments">Musical Instruments</option>
-          <option value="sports-exercise">Sports and Exercise</option>
+          <option value="Household, Pets, Garden">Household, Pets, Garden</option>
+          <option value="Musical Instruments">Musical Instruments</option>
         </select>
       </form>
     );

@@ -13,10 +13,36 @@ const ItemForm = ({
     <form onSubmit={handleSubmit}>
       <label htmlFor="name">Title</label>
       <span className="row">
-        <textarea value={item.name} name="name" required onChange={handleChange} />
+        <textarea
+          value={item.name}
+          name="name"
+          required
+          onChange={handleChange}
+        />
         <p className="form-input-desc">
           This will be the heading of your item's page. 50 characters max.
         </p>
+      </span>
+      <span className="row">
+        <select
+          className="categoryselect"
+          name="category"
+          // value={this.state.value}
+          onChange={handleChange}
+        >
+          <option value="">Select a Category</option>
+          <option value="Art & Antiques">Art and Antiques</option>
+          <option value="Auto - Cars, Motorcycles">
+            Auto - Cars, Motorcycles
+          </option>
+          <option value="Cell Phones, Tablets, Smart Mobile Devices">Cell Phones, Tablets, Mobile</option>
+          <option value="Clothing & Shoes">Clothes and Shoes</option>
+          <option value="Electronics, Computers, Appliances">
+            Electronics, Computers, Appliances
+          </option>
+          <option value="Household, Pets, Garden">Household, Pets, Garden</option>
+          <option value="Musical Instruments">Musical Instruments</option>
+        </select>
       </span>
       <label htmlFor="location">Location</label>
       <span className="row">
@@ -48,7 +74,7 @@ const ItemForm = ({
       <span className="row">
         <textarea
           value={item.photo}
-          name="photo"
+          name="photos"
           required
           onChange={handleChange}
         />
@@ -61,7 +87,7 @@ const ItemForm = ({
       <label htmlFor="price">Price(USD)</label>
       <span className="row">
         <input
-        type="number"
+          type="number"
           value={item.price}
           name="price"
           required
