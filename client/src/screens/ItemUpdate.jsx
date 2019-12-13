@@ -61,6 +61,7 @@ class ItemUpdate extends Component {
           item={item}
           handleChange={handleChange}
           handleSubmit={handleSubmit}
+          history={this.props.history}
           cancelPath={`/items/${this.props.match.params.id}`}
         />
       </>
