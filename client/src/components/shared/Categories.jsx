@@ -1,4 +1,6 @@
 import React from "react";
+import api from '../../services/apiConfig'
+
 
 
 class Categories extends React.Component {
@@ -10,15 +12,31 @@ class Categories extends React.Component {
     };
   }
 
+
+
+
+  componentDidMount() {
+    fetch('https://http://localhost:3000/api/items')
+      .then(response => { return response.json()})
+      .then(item => this.setState({categories:item.items.category}))
+      
+  }
   
+
+
   handleChange = e => {
     this.setState({ value: e.target.value });
+    this.state.categories.filter(category => {
+      return category
+    })
+    
   };
   handleSubmit = e => {
     e.preventDefault();
   };
 
   render() {
+
     return (
       <form onSubmit={this.handleSubmit}>
         <label htmlFor="category">Select a category</label>
