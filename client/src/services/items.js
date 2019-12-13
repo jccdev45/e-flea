@@ -21,6 +21,7 @@ export const getItems = async () => {
 
 export const updateItem = async (id, item) => {
   try {
+    console.log("ITEMMMMM", item)
     const resp = await api.put(`/items/${id}`, item);
     console.log("Item.js Line 25");
     return resp.data.item;
