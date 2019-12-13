@@ -2,6 +2,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   margin: 0 auto;
+  padding-top: 100px;
 }
 
 .item {
@@ -36,4 +37,22 @@ hr {
 .item-detail-photos img {
   width: 40%;
   height: auto;
+}
+
+
+
+@media only screen and (min-width: 1024px) {
+
+  p   {
+    font-family: "Sinhala MN"
+    
+
+}
+
+  .items {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    margin: 0 auto;
+  }
+
 }
