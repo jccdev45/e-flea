@@ -43,6 +43,7 @@ export default class Item extends Component {
   destroy = () => {
     deleteItem(this.state.item.id)
       .then(() => this.setState({ deleted: true }))
+      .then(() => alert("Item deleted!"))
       .catch(console.error);
   };
 
@@ -54,7 +55,7 @@ export default class Item extends Component {
     }
 
     if (deleted) {
-      return <Redirect to="/items" />;
+      return <Redirect to="/" />;
     }
 
     return (
