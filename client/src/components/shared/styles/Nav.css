@@ -6,42 +6,54 @@
     rgba(153, 143, 199, 0.9710259103641457) 100%
   );
 
-  width: 100%;
+  flex: 1;
   height: 150px;
-  display: flex;
   justify-content: space-between;
 }
 
-.alwaysnav {
-  display: flex;
-  justify-content: space-between;
+.header a:hover {
+  animation: link .8s forwards;
 }
 
-
-.nav-container {
-  display: flex;
-  justify-content: space-evenly;
-}
-
-.nav-home {
-
-  display: flex;
-  justify-content: center;
-
+@keyframes link {
+  from {
+    text-decoration: none;
+    opacity: .5;
+  }
+  to {
+    text-decoration: underline;
+    opacity: 1;
+  }
 }
 
 .nav {
   text-decoration: none;
   font-family: "Sinhala MN";
   color: white;
-  font-size: 25px;
+  font-size: 22px;
 }
+
+.nav-container {
+  justify-content: space-evenly;
+  align-items: center;
+  flex: 1;
+}
+
+.nav-home {
+  justify-content: space-between;
+  flex: 2;
+  margin: 0 1em;
+}
+
+.user-info {
+  justify-content: center;
+  align-items: center;
+}
+
 .navlink-home {
-  display: flex;
-  align-self: center;
-  font-size:  70px;
+  text-align: left;
+  font-size: 2em;
   text-transform: uppercase;
-  margin-left: 20px;
 }
 
 .active {
@@ -51,47 +63,42 @@
 .usrpic {
   border-radius: 50%;
   width: 75px;
-  height: 75px;
   float: right;
   margin: 20px;
 }
 
-.nav-signin, .sign-out {
+.sign-out {
   justify-content: flex-end;
 }
 
 .nav-signin > * {
-  margin: 0 .5rem;
+  margin: 0 0.5rem;
 }
-@media only screen and (max-width: 375px){
 
-
+@media only screen and (max-width: 375px) {
   .nav-container {
-    padding-right: 10px;
+    /* padding-right: 10px; */
   }
 }
 
-
-@media only screen and (max-width: 768px){
-
-
+@media only screen and (max-width: 768px) {
   .nav-container {
-    padding-right: 60px;
+    /* padding-right: 60px; */
   }
 }
-
 
 @media only screen and (max-width: 1024px) {
-
+  .header {
+    height: 100px;
+  }
+  
   .nav-container {
-    padding-right: 100px;
+    /* padding-right: 100px; */
   }
 }
 
-
 @media only screen and (max-width: 1440px) {
-
   .nav-container {
-    padding-right: 20px;
+    /* padding-right: 20px; */
   }
 }
