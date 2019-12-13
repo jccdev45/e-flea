@@ -5,7 +5,7 @@ const JwtToken = localStorage.getItem("token") || null;
 let apiUrl;
 
 const apiUrls = {
-  production: "e-flea-market.herokuapp.com/api",
+  production: "eflea-market.herokuapp.com/api",
   development: "http://localhost:3000/api"
 };
 
