@@ -22,7 +22,8 @@ export const getItems = async () => {
 export const updateItem = async (id, item) => {
   try {
     const resp = await api.put(`/items/${id}`, item);
-    return resp.data;
+    console.log("Item.js Line 25");
+    return resp.data.item;
   } catch (error) {
     throw error;
   }

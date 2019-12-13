@@ -13,7 +13,7 @@ router.get('/items', controllers.getAllItems)
 router.get('/items/:id', controllers.getItemById)
 router.post('/items', controllers.createItem)
 router.put('/items/:id', controllers.updateItem)
-router.delete('/items/:id', restrict, controllers.deleteItem)
+router.delete('/items/:id', controllers.deleteItem)
 // router.get('/items/:id', controllers.getAllItemsByUserId)
 router.delete('/items/:id', controllers.deleteItem)
 

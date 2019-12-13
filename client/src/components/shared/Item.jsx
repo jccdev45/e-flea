@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { getItemById, getUserById, deleteItem } from "../../services/items";
 import Layout from "./Layout";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import "./styles/Item.css";
 
 export default class Item extends Component {
@@ -10,7 +10,9 @@ export default class Item extends Component {
 
     this.state = {
       item: null,
-      user: null
+      user: null,
+      confirm: false,
+      deleted: false
     };
   }
 
@@ -26,6 +28,18 @@ export default class Item extends Component {
     }
   }
 
+  confirm = () => {
+    this.setState({ confirm: true });
+    return (
+      <div className="background">
+        <div className="modal">
+          <h3>Are you sure you want to delete this item?</h3>
+          <button onClick={this.destroy}>Delete Item</button>
+        </div>
+      </div>
+    );
+  };
+
   destroy = () => {
     deleteItem(this.state.item.id)
       .then(() => this.setState({ deleted: true }))
@@ -33,10 +47,14 @@ export default class Item extends Component {
   };
 
   render() {
-    const { item, user } = this.state;
+    const { item, user, deleted, confirm } = this.state;
 
     if (!item || !user) {
       return <p>Loading</p>;
+    }
+
+    if (deleted) {
+      return <Redirect to="/items" />;
     }
 
     return (
@@ -65,12 +83,12 @@ export default class Item extends Component {
           <p>{item.description}</p>
         </div>
         {!this.props.user ? null : this.props.user.id === item.userId ? (
-          <div className="row update-delete">
-            {/* <button>Update Item</button> */}
-            <Link to={`/items/${item.id}/edit`}>Update Item</Link>
-            <button>Delete Item</button>
+          <div className="row edit-btns">
+            {/* <Link to={`/items/${item.id}/edit`}>Update Item</Link> */}
+            <button onClick={this.confirm}>Delete Item</button>
           </div>
         ) : null}
+        {confirm ? this.confirm : null}
       </Layout>
     );
   }
