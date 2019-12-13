@@ -5,9 +5,12 @@ class Categories extends React.Component {
   constructor() {
     super();
     this.state = {
-      value: ''
+      value: '',
+      categories: []
     };
   }
+
+  
   handleChange = e => {
     this.setState({ value: e.target.value });
   };

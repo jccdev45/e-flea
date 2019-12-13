@@ -1,7 +1,10 @@
 {
   "name": "e-flea",
   "version": "1.0.0",
-  "description": "",
+  "description": "an online marketplace",
+  "engines": {
+    "node": "12.11.1"
+  },
   "main": "index.js",
   "scripts": {
     "test": "cross-env NODE_ENV=test jest --testTimeout=10000",
